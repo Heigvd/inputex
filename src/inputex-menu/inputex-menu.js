@@ -58,6 +58,7 @@ Y.extend(inputEx.MenuField, inputEx.Field, {
 
       // New options
       this.options.typeInvite = options.typeInvite || inputEx.messages.menuTypeInvite;
+      this.options.colorInvite = options.colorInvite || "FFFFFF";
       this.options.menuTrigger = options.menuTrigger || "click";
       this.options.menuOrientation = options.menuOrientation || VERTICAL;
       this.options.menuItems = options.menuItems;
@@ -90,6 +91,7 @@ Y.extend(inputEx.MenuField, inputEx.Field, {
       //   -> will be used to display selection after click
       this._textFromValue = {};
 
+      // This method returns template completed with data.
       var renderMenuRecurs = function (id, conf, level) {
          if (level>5) throw new Error("MenuField : too much recursion, menuItems property should be 5 level deep at most.");
 
@@ -114,7 +116,7 @@ Y.extend(inputEx.MenuField, inputEx.Field, {
                href:          '#'+item.value,
                submenu:       '',
                label_class:   'yui3-menuitem-content',
-               item_class:    ''
+               item_class:    item.classname
             };
 
             // item with submenu
@@ -122,7 +124,7 @@ Y.extend(inputEx.MenuField, inputEx.Field, {
                templateData.label_class = 'yui3-menu-label';
                templateData.submenu     = renderMenuRecurs(item.value, item.submenu.itemdata, level+1);
             } else {
-               templateData.item_class = 'yui3-menuitem';
+               templateData.item_class += ' yui3-menuitem';
                that._textFromValue[item.value] = item.text;
             }
 
