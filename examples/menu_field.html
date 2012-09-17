@@ -186,6 +186,89 @@
 	</div>
 </div>
 
+
+
+
+
+<!-- Example 3 -->
+<div class='exampleDiv'>
+	<h2>Basic MenuField creation with color</h2>
+	<p>Use the following code to create a basic inputEx MenuField with some color.</p>
+	<div class='demoContainer' id='container3'></div>
+	<div class='codeContainer'>
+		<pre class="brush:js">
+		   var menuItems = [
+			   {
+				   text:'America',
+				   submenu:{
+					   itemdata:[
+							{text:'United States of America',value:'Us'},
+							{text:'Canada',value:'Ca'}
+						]
+					}
+			   },
+				{
+				   text:'Europe',
+				   submenu:{
+					   itemdata:[
+							{
+								text:'Western Europe',
+								submenu:{
+								   itemdata:[
+										{text:'France',value:'Fr'},
+										{text:'United Kingdom',value:'Uk'},
+										{text:'Germany',value:'De'}
+									]
+								}
+							},
+							{
+								text:'Eastern Europe',
+								submenu:{
+								   itemdata:[
+										{text:'Poland',value:'Pl'},
+										{text:'Czech Republic',value:'Cz'},
+										{text:'Slovakia',value:'Sk'}
+									]
+								}
+							}
+						]
+					}
+			   },
+			   {
+					text:'Africa',
+				   submenu:{
+					   itemdata:[
+							{text:'Senegal',value:'Sn'},
+							{text:'Madagascar',value:'Mg'}
+						]
+					}
+				}
+		   ];
+
+			var menu = new Y.inputEx.MenuField({
+				colorInvite : "#FF0000",
+				parentEl: 'container3',
+				name: 'country',
+				label: 'Your Country:',
+				menuItems: menuItems
+			});
+
+	
+		var div = Y.one('#container3');
+
+		var button1 = inputEx.cn('button', null, null, "Yellow");
+		div.appendChild(button1);
+		Y.one(button1).on('click' ,function() { 
+			menu.setBackgroundColorOfRootLabel("#FFF000");
+		});
+
+		</pre>
+	</div>
+</div>
+
+
+
+
 <script src="../src/loader.js"  type='text/javascript'></script>
 <script src="../res/inputex-examples.js"  type='text/javascript'></script>
 <script>
