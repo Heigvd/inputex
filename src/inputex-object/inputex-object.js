@@ -43,14 +43,14 @@ Y.extend(inputEx.ObjectField, inputEx.ListField, {
     * Convert the object into a list of pairs
     * @method setValue
     */
-   setValue: function(v) {
+   setValue: function(v, sendUpdatedEvent) {
       var val = [];
       for(var key in v) {
          if( v.hasOwnProperty(key) ) {
             val.push([key, v[key]]);
          }
       }
-      inputEx.ObjectField.superclass.setValue.call(this,val);
+      inputEx.ObjectField.superclass.setValue.call(this,val, sendUpdatedEvent);
    }
 });
 
