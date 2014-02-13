@@ -315,11 +315,15 @@ inputEx.JsonSchema.Builder.prototype = {
 	        	  fieldDef.name = propertyName;
 	          }
 	
-	          for(key in p.properties) {
-	             if(p.properties.hasOwnProperty(key)) {
-	                fields.push( this.schemaToInputEx(p.properties[key], key) );
-	             }
-	          }
+                    if (!p._inputex || !p._inputex.fields) { // @modified
+                        for(key in p.properties) {
+                           if(p.properties.hasOwnProperty(key)) {
+                              fields.push( this.schemaToInputEx(p.properties[key], key) );
+                           }
+                        }
+
+                        fieldDef.fields = fields;
+                    }
 	
 	          fieldDef.fields = fields;
 	          
