@@ -56,7 +56,7 @@ Y.extend(inputEx.ListField,inputEx.Field, {
 	   
 	   this.options.sortable = lang.isUndefined(options.sortable) ? false : options.sortable;
 	   this.options.elementType = options.elementType || {type: 'string'};
-	   this.options.useButtons = lang.isUndefined(options.useButtons) ? false : options.useButtons;
+	   this.options.useButtons = lang.isUndefined(options.useButtons) ? true : options.useButtons;
 	   this.options.unique = lang.isUndefined(options.unique) ? false : options.unique;
 	   
 	   this.options.listAddLabel = options.listAddLabel || inputEx.messages.listAddLink;

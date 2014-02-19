@@ -324,8 +324,6 @@ inputEx.JsonSchema.Builder.prototype = {
 
                         fieldDef.fields = fields;
                     }
-	
-	          fieldDef.fields = fields;
 	          
 	       }
 	       else if(type == "string" && (p["enum"] || p["choices"]) ) {
