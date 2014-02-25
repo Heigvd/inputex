@@ -92,7 +92,7 @@ Y.extend(inputEx.PasswordField, inputEx.StringField, {
 	   
 	   // Password strength indicator
 		if(this.options.strengthIndicator) {
-		   this.strengthEl = inputEx.cn('div', {className: 'inputEx-Password-StrengthIndicator'}, null, inputEx.messages.passwordStrength);
+		   this.strengthEl = inputEx.cn('div', {className: 'inputEx-Password-StrengthIndicator'});
 		   this.strengthBlocks = [];
 		   for(var i = 0 ; i < 4 ; i++) {
 		      var lamp = inputEx.cn('div', {className: 'inputEx-Password-StrengthIndicatorBlock'});
