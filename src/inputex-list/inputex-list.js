@@ -185,7 +185,13 @@ Y.extend(inputEx.ListField,inputEx.Field, {
 	   }
 	   return values;
 	},
-	   
+
+	destroy: function () {
+	   for (var i = 0; i < this.subFields.length; i++) {
+		this.subFields[i].destroy();
+	   }	
+	   inputEx.ListField.superclass.destroy.call(this);
+	},   
 	/**
 	 * Adds an element
 	 * @method addElement
