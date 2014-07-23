@@ -103,6 +103,11 @@ Y.extend(inputEx.Group, inputEx.Field, {
          this.fieldset.appendChild(this.legend);
       }
       
+      
+    this.options.fields.sort(function (a, b) {
+        return (a.index || 0) - (b.index || 0);
+    });
+      
       // Iterate this.createInput on input fields
       for (var i = 0 ; i < this.options.fields.length ; i++) {
          var fieldOptions = this.options.fields[i];
