@@ -43,14 +43,15 @@ Y.extend(inputEx.StringField, inputEx.Field, {
 	   this.options.maxLength = options.maxLength;
 	   this.options.minLength = options.minLength;
 	   this.options.typeInvite = options.typeInvite;
+            if (this.options.typeInvite === undefined) {
+                this.options.typeInvite = !this.options.required ? "optional" : "required";// Automatically add the "optional" message when necessary
+            }
 	   this.options.readonly = options.readonly;
 	   this.options.autocomplete = lang.isUndefined(options.autocomplete) ?
 	                                  inputEx.browserAutocomplete :
 	                                  (options.autocomplete === false || options.autocomplete === "off") ? false : true;
 	   this.options.trim = (options.trim === true) ? true : false;
    },
-
-
    /**
     * Render an 'INPUT' DOM node
     * @method renderComponent
@@ -92,7 +93,8 @@ Y.extend(inputEx.StringField, inputEx.Field, {
     * @method initEvents
     */
    initEvents: function() {
-     Y.on("change", this.onChange,this.el, this);
+        //Y.on("change", this.onChange,this.el, this);
+        Y.on("valueChange", this.onChange, this.el, this);                      // Modified to allow changes on the fly
 
        if (Y.UA.ie > 0){ // refer to inputEx-95
             var field = this.el;
@@ -107,7 +109,21 @@ Y.extend(inputEx.StringField, inputEx.Field, {
      Y.on("keypress", this.onKeyPress, this.el, this);
      Y.on("keyup", this.onKeyUp, this.el, this);
    },
-
+   
+    /**
+     *
+     */
+    onChange: function(e) {
+        if (e.prevVal === this.options.typeInvite) {
+            e.prevVal = "";
+        }
+        if (e.newVal === this.options.typeInvite) {
+            e.newVal = "";
+        }
+        if (e.newVal !== e.prevVal) {                                           // Do not fire event as typeInvite should not be considered.
+            this.fireUpdatedEvt();
+        }
+    },
    /**
     * Return the string value
     * @method getValue

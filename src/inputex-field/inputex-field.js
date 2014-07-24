@@ -425,8 +425,20 @@ YUI.add("inputex-field",function(Y) {
 	   */
 	  getParentField: function() {
 		  return this.parentField;
-	  }
-     
+	  },
+        /**
+         * So we can easily change classs on inputex fields
+         */
+        addClassName: function(className) {
+            Y.one(this.divEl).addClass(className);
+        },
+        removeClassName: function(className) {
+            Y.one(this.divEl).removeClass(className);
+        },
+        removeClassFromState: function() {
+            Y.one(this.divEl).all(".inputEx-invalid .inputEx-message").setContent("");
+            Y.one(this.divEl).all(".inputEx-invalid").removeClass("inputEx-invalid");
+        }
   };
 
   Y.augment(inputEx.Field, Y.EventTarget, null, null, {});

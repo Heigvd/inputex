@@ -193,34 +193,33 @@ YUI.add("inputex", function(Y){
      },
      
      
-     /**
-      * Return recursively the inputex modules from their 'type' property using (modulesByType from loader.js)
-      * @method getRawModulesFromDefinition
-      * @static
-      */
-     getRawModulesFromDefinition: function(inputexDef) {
-        
+    /**
+     * Return recursively the inputex modules from their 'type' property using (modulesByType from loader.js)
+     * @method getRawModulesFromDefinition
+     * @static
+     */
+    getRawModulesFromDefinition: function(inputexDef) {
+
         var type = inputexDef.type || 'string',
             module = YUI_config.groups.inputex.modulesByType[type],
             modules = [module || type],
             //set fields if they exist
-            fields = inputexDef.fields ||
-            //else see if we have elementType for lists - if neither then we end up with null
-            inputexDef.elementType && inputexDef.elementType.fields;
-        
-        
-        // recursive for group,forms,list,combine, etc...
-        if(fields) {
-           Y.Array.each(fields, function(field) {
-                modules = modules.concat( this.getModulesFromDefinition(field) );
-           }, this);
+            fields = inputexDef.fields || inputexDef.availableFields || [];     // Let inputex also get requirement from selectfields, lists
+
+        if (inputexDef.elementType) {                                           // else see if we have elementType for lists
+            fields.push(inputexDef.elementType);
         }
-        
+
+        // recursive for group,forms,list,combine, etc...
+        Y.Array.each(fields, function(field) {
+            modules = modules.concat(this.getModulesFromDefinition(field));
+        }, this);
+
         // TODO: inplaceedit  editorField
-        
+
         return modules;
-     },
-     
+    },
+    
      /**
       * Return unique modules definitions
       * @method getModulesFromDefinition
