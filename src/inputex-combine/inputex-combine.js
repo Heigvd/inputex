@@ -213,7 +213,11 @@ Y.extend( inputEx.CombineField, inputEx.Group, {
 	      values.push(this.inputs[i].getValue());
 	   }
 	   return values;
-	}
+	},
+    destroy: function() {
+        Y.one(this.divEl).destroy();
+        inputEx.CombineField.superclass.destroy.call(this);
+    }
 	
 });
 	
@@ -227,4 +231,3 @@ inputEx.registerType("combine", inputEx.CombineField, [
 }, '3.1.0',{
   requires: ['inputex-group']
 });
-   
