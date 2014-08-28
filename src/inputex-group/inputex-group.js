@@ -543,11 +543,11 @@ Y.extend(inputEx.Group, inputEx.Field, {
    
 // Register this class as "group" type
 inputEx.registerType("group", inputEx.Group, [
-   { type: "string", label: "Name", name: "name", value: '' },
-   { type: 'string', label: 'Legend', name:'legend'},
-   { type: 'boolean', label: 'Collapsible', name:'collapsible', value: false},
-   { type: 'boolean', label: 'Collapsed', name:'collapsed', value: false},
-   { type: 'list', label: 'Fields', name: 'fields', elementType: {type: 'type' } }
+//   { type: "string", label: "Name", name: "name", value: '' },
+//   { type: 'string', label: 'Legend', name:'legend'},
+//   { type: 'boolean', label: 'Collapsible', name:'collapsible', value: false},
+//   { type: 'boolean', label: 'Collapsed', name:'collapsed', value: false},
+   { type: 'list', label: '', name: 'fields', elementType: {type: 'type' } }
 ], true);
 
 
