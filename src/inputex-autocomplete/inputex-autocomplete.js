@@ -115,6 +115,12 @@ Y.extend(inputEx.AutoComplete, inputEx.StringField, {
       // Instantiate AutoComplete
       this.yEl.ac.on("select",this.itemSelectHandler, this);
       this.yEl.on("blur", this.onBlur, this);
+            
+      this.yEl.on("valueChange", function() {                                   // Add on key down value change handling value change 
+            this.hiddenEl.value = this.el.value;
+            this.setClassFromState();
+            this.fireUpdatedEvt();
+      }, this);
    },
    
    /**
