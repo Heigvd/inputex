@@ -30,6 +30,8 @@ Y.extend(inputEx.UneditableField, inputEx.Field, {
 	setOptions: function(options) {
       inputEx.UneditableField.superclass.setOptions.call(this,options);
       this.options.visu = options.visu;
+      
+        this.options.wrapperClassName = options.wrapperClassName || 'inputEx-uneditableField inputEx-fieldWrapper';
    },
    
    /**
