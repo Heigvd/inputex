@@ -233,7 +233,7 @@ Y.extend(inputEx.StringField, inputEx.Field, {
     * @method setClassFromState
     */
    setClassFromState: function() {
-	   inputEx.StringField.superclass.setClassFromState.call(this);
+	   inputEx.StringField.superclass.setClassFromState.apply(this, arguments);
 
 	   // display/mask typeInvite
 	   if(this.options.typeInvite) {
